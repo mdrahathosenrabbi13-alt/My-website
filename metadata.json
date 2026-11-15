@@ -1,0 +1,6 @@
+{
+  "name": "Best Shoping BD",
+  "description": "Bangladeshi e-commerce mobile shopping application with BDT catalog, cart sync, multi-method checkout, live order tracking, wishlist, notifications, and admin dashboard.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
