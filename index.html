@@ -1,0 +1,1157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Best Shoping BD — Shop Smart, Shop Easy!</title>
+  <meta name="description" content="Best Shoping BD — Trusted Bangladeshi e-commerce store in Gaibandha, Bangladesh. Fashion, electronics, beauty, footwear & accessories with fast nationwide delivery." />
+  <link rel="icon" type="image/jpeg" href="./app/src/main/res/drawable/img_app_icon_fg.jpg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #f6faf8;
+      --surface: #ffffff;
+      --surface-soft: #ecf4f0;
+      --text: #102019;
+      --muted: #4b6358;
+      --primary: #0a4d3c;
+      --primary-hover: #0d664f;
+      --gold: #d49b1a;
+      --gold-soft: #fef6df;
+      --danger: #c62828;
+      --border: #d5e4dc;
+      --shadow: 0 10px 28px rgba(10, 77, 60, 0.08);
+      --radius: 18px;
+    }
+
+    html[data-theme="dark"] {
+      --bg: #0b1411;
+      --surface: #12201b;
+      --surface-soft: #1a2d26;
+      --text: #eef6f2;
+      --muted: #9eb7ab;
+      --primary: #20b486;
+      --primary-hover: #2bc998;
+      --gold: #f5c242;
+      --gold-soft: #2c2411;
+      --danger: #ef5350;
+      --border: #253d34;
+      --shadow: 0 12px 30px rgba(0, 0, 0, 0.35);
+    }
+
+    * { box-sizing: border-box; }
+    html, body {
+      margin: 0;
+      padding: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Plus Jakarta Sans', 'Hind Siliguri', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+      line-height: 1.5;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a { color: inherit; text-decoration: none; }
+    button, input, select { font-family: inherit; }
+
+    .container {
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 16px;
+    }
+
+    .topbar {
+      background: var(--primary);
+      color: #ffffff;
+      font-size: 12.5px;
+      padding: 7px 0;
+    }
+    .topbar-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    header.navbar {
+      position: sticky;
+      top: 0;
+      z-index: 30;
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+      backdrop-filter: blur(10px);
+    }
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+      padding: 12px 0;
+      flex-wrap: wrap;
+    }
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 800;
+      font-size: 18px;
+      letter-spacing: -0.02em;
+    }
+    .brand img {
+      width: 40px;
+      height: 40px;
+      border-radius: 12px;
+      object-fit: cover;
+      background: #0a4d3c;
+    }
+    .brand small {
+      display: block;
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--gold);
+    }
+
+    .search-wrap {
+      flex: 1 1 260px;
+      max-width: 460px;
+      display: flex;
+      align-items: center;
+      background: var(--surface-soft);
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      padding: 6px 14px;
+      gap: 8px;
+    }
+    .search-wrap input {
+      border: none;
+      background: transparent;
+      color: var(--text);
+      width: 100%;
+      outline: none;
+      font-size: 14px;
+    }
+
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .pill-btn {
+      border: 1px solid var(--border);
+      background: var(--surface-soft);
+      color: var(--text);
+      padding: 8px 13px;
+      border-radius: 999px;
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      min-height: 40px;
+    }
+    .pill-btn.primary {
+      background: var(--primary);
+      color: #ffffff;
+      border-color: transparent;
+    }
+    .pill-btn.primary:hover { background: var(--primary-hover); }
+    .badge {
+      background: var(--gold);
+      color: #161204;
+      font-weight: 800;
+      font-size: 11px;
+      padding: 1px 7px;
+      border-radius: 999px;
+    }
+
+    .hero {
+      margin-top: 18px;
+      border-radius: 24px;
+      overflow: hidden;
+      background: linear-gradient(125deg, #07382b 0%, #0d664f 60%, #1a4b3d 100%);
+      color: #ffffff;
+      display: grid;
+      grid-template-columns: 1.2fr 1fr;
+      align-items: center;
+      box-shadow: var(--shadow);
+    }
+    .hero-copy {
+      padding: 34px 30px;
+    }
+    .hero-badge {
+      display: inline-block;
+      background: rgba(245, 194, 66, 0.2);
+      color: #ffd86b;
+      border: 1px solid rgba(245, 194, 66, 0.45);
+      border-radius: 999px;
+      padding: 4px 12px;
+      font-size: 12px;
+      font-weight: 700;
+      margin-bottom: 12px;
+    }
+    .hero h1 {
+      margin: 0 0 10px;
+      font-size: clamp(24px, 3.6vw, 38px);
+      line-height: 1.16;
+      font-weight: 800;
+    }
+    .hero p {
+      margin: 0 0 20px;
+      color: rgba(255, 255, 255, 0.88);
+      font-size: 15px;
+      max-width: 52ch;
+    }
+    .hero-cta-row {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+    .hero-btn {
+      background: #f5c242;
+      color: #161204;
+      border: none;
+      padding: 11px 20px;
+      border-radius: 12px;
+      font-weight: 800;
+      font-size: 14px;
+      cursor: pointer;
+    }
+    .hero-btn.secondary {
+      background: rgba(255, 255, 255, 0.14);
+      color: #ffffff;
+      border: 1px solid rgba(255, 255, 255, 0.3);
+    }
+    .hero-visual {
+      height: 100%;
+      min-height: 250px;
+      position: relative;
+    }
+    .hero-visual img {
+      width: 100%;
+      height: 100%;
+      max-height: 320px;
+      object-fit: cover;
+      display: block;
+    }
+
+    .controls-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin: 22px 0 14px;
+    }
+    .chip-row {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+    .chip {
+      border: 1px solid var(--border);
+      background: var(--surface);
+      color: var(--text);
+      padding: 7px 14px;
+      border-radius: 999px;
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+    }
+    .chip.active {
+      background: var(--primary);
+      color: #ffffff;
+      border-color: var(--primary);
+    }
+
+    .sort-select {
+      border: 1px solid var(--border);
+      background: var(--surface);
+      color: var(--text);
+      padding: 8px 12px;
+      border-radius: 12px;
+      font-size: 13px;
+      font-weight: 600;
+    }
+
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(235px, 1fr));
+      gap: 16px;
+      margin-bottom: 34px;
+    }
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.04);
+      transition: transform 0.16s ease, box-shadow 0.16s ease;
+    }
+    .card:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--shadow);
+    }
+    .card-img-box {
+      position: relative;
+      aspect-ratio: 4 / 3;
+      background: var(--surface-soft);
+      overflow: hidden;
+      cursor: pointer;
+    }
+    .card-img-box img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    .discount-tag {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      background: #d32f2f;
+      color: #ffffff;
+      font-size: 11px;
+      font-weight: 800;
+      padding: 3px 8px;
+      border-radius: 999px;
+    }
+    .card-body {
+      padding: 14px;
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+      gap: 6px;
+    }
+    .card-brand {
+      font-size: 11.5px;
+      font-weight: 700;
+      color: var(--primary);
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+    .card-title {
+      font-size: 15px;
+      font-weight: 700;
+      margin: 0;
+      cursor: pointer;
+    }
+    .card-meta {
+      font-size: 12px;
+      color: var(--muted);
+    }
+    .price-row {
+      display: flex;
+      align-items: baseline;
+      gap: 8px;
+      margin-top: auto;
+      padding-top: 6px;
+    }
+    .price-now {
+      font-size: 18px;
+      font-weight: 800;
+      color: var(--primary);
+    }
+    .price-old {
+      font-size: 13px;
+      color: var(--muted);
+      text-decoration: line-through;
+    }
+    .card-btn {
+      margin-top: 8px;
+      width: 100%;
+      border: none;
+      border-radius: 12px;
+      padding: 10px 12px;
+      font-weight: 700;
+      font-size: 13.5px;
+      background: var(--primary);
+      color: #ffffff;
+      cursor: pointer;
+      min-height: 42px;
+    }
+    .card-btn:hover { background: var(--primary-hover); }
+
+    .info-banner {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 20px;
+      margin-bottom: 36px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 16px;
+    }
+    .info-box h3 {
+      margin: 0 0 4px;
+      font-size: 15px;
+      font-weight: 800;
+    }
+    .info-box p {
+      margin: 0;
+      font-size: 13px;
+      color: var(--muted);
+    }
+
+    .drawer-backdrop {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.5);
+      z-index: 60;
+      display: none;
+      justify-content: flex-end;
+    }
+    .drawer-backdrop.open { display: flex; }
+    .drawer {
+      width: 100%;
+      max-width: 430px;
+      height: 100%;
+      background: var(--surface);
+      color: var(--text);
+      display: flex;
+      flex-direction: column;
+      box-shadow: -8px 0 32px rgba(0, 0, 0, 0.2);
+    }
+    .drawer-header {
+      padding: 16px 18px;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .drawer-body {
+      flex: 1;
+      overflow-y: auto;
+      padding: 16px 18px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .drawer-footer {
+      padding: 16px 18px;
+      border-top: 1px solid var(--border);
+      background: var(--surface-soft);
+    }
+    .cart-item {
+      display: flex;
+      gap: 10px;
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 10px;
+      align-items: center;
+    }
+    .cart-item img {
+      width: 60px;
+      height: 60px;
+      border-radius: 10px;
+      object-fit: cover;
+    }
+    .qty-row {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin-top: 6px;
+    }
+    .qty-btn {
+      width: 28px;
+      height: 28px;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      background: var(--surface-soft);
+      color: var(--text);
+      font-weight: 800;
+      cursor: pointer;
+    }
+    .summary-line {
+      display: flex;
+      justify-content: space-between;
+      font-size: 13.5px;
+      margin-bottom: 6px;
+    }
+    .summary-total {
+      display: flex;
+      justify-content: space-between;
+      font-size: 17px;
+      font-weight: 800;
+      margin: 10px 0 12px;
+      padding-top: 8px;
+      border-top: 1px solid var(--border);
+    }
+
+    .modal-backdrop {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.55);
+      z-index: 70;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 16px;
+    }
+    .modal-backdrop.open { display: flex; }
+    .modal-card {
+      width: 100%;
+      max-width: 660px;
+      background: var(--surface);
+      border-radius: 22px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow);
+      display: grid;
+      grid-template-columns: 1fr 1.15fr;
+    }
+    .modal-img {
+      width: 100%;
+      height: 100%;
+      min-height: 240px;
+      max-height: 380px;
+      object-fit: cover;
+    }
+    .modal-content {
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .wa-float {
+      position: fixed;
+      right: 18px;
+      bottom: 18px;
+      z-index: 50;
+      background: #25d366;
+      color: #ffffff;
+      border-radius: 999px;
+      padding: 12px 18px;
+      font-weight: 800;
+      font-size: 13.5px;
+      box-shadow: 0 10px 24px rgba(37, 211, 102, 0.35);
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    footer {
+      border-top: 1px solid var(--border);
+      background: var(--surface);
+      padding: 24px 0 70px;
+      font-size: 13px;
+      color: var(--muted);
+    }
+
+    @media (max-width: 760px) {
+      .hero { grid-template-columns: 1fr; }
+      .modal-card { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <div class="topbar">
+    <div class="container topbar-inner">
+      <span id="topbar-location">Gaibandha, Bangladesh • Hotline: 01787962913</span>
+      <span id="topbar-promo">Free delivery above ৳3,000 • Coupons: EID15 (15% off), SHOP10 (10% off)</span>
+    </div>
+  </div>
+
+  <header class="navbar">
+    <div class="container nav-inner">
+      <a class="brand" href="./">
+        <img src="./app/src/main/res/drawable/img_app_icon_fg.jpg" alt="Best Shoping BD Logo" onerror="this.style.display='none'" />
+        <div>
+          <span>Best Shoping BD</span>
+          <small id="brand-tagline">Shop Smart, Shop Easy!</small>
+        </div>
+      </a>
+
+      <div class="search-wrap">
+        <span>🔍</span>
+        <input id="search-input" type="search" placeholder="Search sarees, electronics, sneakers..." aria-label="Search products" />
+      </div>
+
+      <div class="nav-actions">
+        <button id="lang-btn" class="pill-btn" type="button">বাংলা</button>
+        <button id="theme-btn" class="pill-btn" type="button" aria-label="Toggle theme">🌙</button>
+        <button id="cart-open-btn" class="pill-btn primary" type="button">
+          🛒 <span id="cart-label">Cart</span> <span id="cart-badge" class="badge">0</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="hero">
+      <div class="hero-copy">
+        <span class="hero-badge" id="hero-badge">EID &amp; FLASH DEALS • BANGLADESH</span>
+        <h1 id="hero-title">Shop Smart, Shop Easy!</h1>
+        <p id="hero-desc">Authentic fashion, electronics, beauty &amp; lifestyle essentials delivered from Gaibandha to all 64 districts of Bangladesh with bKash, Nagad, Rocket, Upay, Card &amp; Cash on Delivery.</p>
+        <div class="hero-cta-row">
+          <button class="hero-btn" type="button" onclick="document.getElementById('catalog-section').scrollIntoView({behavior:'smooth'})" id="hero-shop-btn">Shop Now</button>
+          <a class="hero-btn secondary" href="https://wa.me/8801787962913?text=Hello%20Best%20Shoping%20BD%2C%20I%20would%20like%20assistance." target="_blank" rel="noopener noreferrer" id="hero-wa-btn">WhatsApp: 01787962913</a>
+        </div>
+      </div>
+      <div class="hero-visual">
+        <img src="./app/src/main/res/drawable/img_hero_fashion.jpg" alt="Best Shoping BD Featured Collection" onerror="this.style.display='none'" />
+      </div>
+    </section>
+
+    <section id="catalog-section">
+      <div class="controls-bar">
+        <div class="chip-row" id="category-chips"></div>
+        <select id="sort-select" class="sort-select" aria-label="Sort products">
+          <option value="featured">Sort: Featured</option>
+          <option value="price-asc">Price: Low to High</option>
+          <option value="price-desc">Price: High to Low</option>
+          <option value="discount">Biggest Discount</option>
+        </select>
+      </div>
+
+      <div id="product-grid" class="product-grid"></div>
+    </section>
+
+    <section class="info-banner">
+      <div class="info-box">
+        <h3 id="info-pay-title">Bangladesh Payment Support</h3>
+        <p id="info-pay-desc">bKash, Nagad, Rocket, Upay, Visa, Mastercard &amp; Cash on Delivery across all 64 districts.</p>
+      </div>
+      <div class="info-box">
+        <h3 id="info-ship-title">Fast Nationwide Delivery</h3>
+        <p id="info-ship-desc">Dhaka ৳60 • Outside Dhaka ৳120 • Free delivery on orders ৳3,000+.</p>
+      </div>
+      <div class="info-box">
+        <h3 id="info-app-title">Native Android App Included</h3>
+        <p id="info-app-desc">Full Kotlin/Jetpack Compose Android app with Google Sign-In, live Firestore cart/orders, 6-stage tracking &amp; Admin Dashboard is included in this repository.</p>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <strong>Best Shoping BD</strong> — Gaibandha, Bangladesh • Support: 01787962913 • Currency: BDT (৳)
+    </div>
+  </footer>
+
+  <a class="wa-float" href="https://wa.me/8801787962913?text=Hello%20Best%20Shoping%20BD%2C%20I%20need%20help." target="_blank" rel="noopener noreferrer">
+    💬 <span id="wa-float-label">WhatsApp Support</span>
+  </a>
+
+  <div id="cart-backdrop" class="drawer-backdrop" role="dialog" aria-modal="true" aria-label="Shopping Cart">
+    <div class="drawer">
+      <div class="drawer-header">
+        <strong id="drawer-title">Shopping Cart</strong>
+        <button id="cart-close-btn" class="pill-btn" type="button">✕</button>
+      </div>
+      <div id="cart-items" class="drawer-body"></div>
+      <div class="drawer-footer">
+        <div style="display:flex; gap:8px; margin-bottom:10px;">
+          <input id="coupon-input" type="text" placeholder="Coupon (EID15 or SHOP10)" style="flex:1; padding:8px 10px; border-radius:10px; border:1px solid var(--border); background:var(--surface); color:var(--text);" />
+          <button id="coupon-apply-btn" class="pill-btn" type="button">Apply</button>
+        </div>
+        <div style="margin-bottom:10px;">
+          <select id="district-select" style="width:100%; padding:8px 10px; border-radius:10px; border:1px solid var(--border); background:var(--surface); color:var(--text);">
+            <option value="Gaibandha">Delivery: Gaibandha / Outside Dhaka (৳120)</option>
+            <option value="Dhaka">Delivery: Dhaka Metro (৳60)</option>
+          </select>
+        </div>
+        <div class="summary-line"><span id="lbl-subtotal">Subtotal</span><strong id="val-subtotal">৳0</strong></div>
+        <div class="summary-line"><span id="lbl-discount">Coupon Discount</span><strong id="val-discount">-৳0</strong></div>
+        <div class="summary-line"><span id="lbl-delivery">Delivery Charge</span><strong id="val-delivery">৳0</strong></div>
+        <div class="summary-total"><span id="lbl-total">Total</span><span id="val-total">৳0</span></div>
+        <button id="checkout-wa-btn" class="card-btn" type="button">Order via WhatsApp (01787962913)</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="product-modal" class="modal-backdrop" role="dialog" aria-modal="true" aria-label="Product Details">
+    <div class="modal-card">
+      <img id="modal-img" class="modal-img" src="" alt="" />
+      <div class="modal-content">
+        <div style="display:flex; justify-content:space-between; align-items:center;">
+          <span id="modal-brand" class="card-brand"></span>
+          <button id="modal-close" class="pill-btn" type="button">✕</button>
+        </div>
+        <h2 id="modal-title" style="margin:0; font-size:20px;"></h2>
+        <div class="price-row" style="padding-top:0; margin-top:0;">
+          <span id="modal-price" class="price-now"></span>
+          <span id="modal-regular" class="price-old"></span>
+        </div>
+        <p id="modal-desc" style="margin:0; font-size:13.5px; color:var(--muted);"></p>
+        <div id="modal-variants" style="font-size:12.5px; color:var(--muted);"></div>
+        <button id="modal-add-btn" class="card-btn" type="button" style="margin-top:auto;">Add to Cart</button>
+      </div>
+    </div>
+  </div>
+
+  <noscript>
+    <div style="padding:20px; background:#fff3cd; color:#422c00; text-align:center;">
+      JavaScript is disabled. Call or WhatsApp Best Shoping BD at 01787962913 (Gaibandha, Bangladesh) to place your order.
+    </div>
+  </noscript>
+
+  <script>
+    (function () {
+      const PRODUCTS = [
+        {
+          id: "prod_jamdani_saree",
+          name: "Emerald Gold Jamdani Silk Saree",
+          nameBn: "এমেরাল্ড গোল্ড জামদানি সিল্ক শাড়ি",
+          desc: "Handcrafted Bangladeshi Jamdani weave in rich emerald silk with shimmering golden motif border. Ideal for Eid and festive occasions.",
+          descBn: "ঐতিহ্যবাহী বাংলাদেশি জামদানি সিল্ক শাড়ি, গাঢ় সবুজ ও সোনালী নকশার অপূর্ব সমন্বয়।",
+          category: "cat_fashion",
+          catLabel: "Fashion",
+          catLabelBn: "ফ্যাশন",
+          brand: "Dhakaiya Loom",
+          regularPrice: 6500,
+          discountPrice: 4850,
+          stock: 18,
+          rating: 4.9,
+          reviews: 42,
+          sizes: ["12 Haat (Standard)"],
+          colors: ["Emerald Gold", "Royal Maroon"],
+          img: "./app/src/main/res/drawable/img_prod_saree.jpg"
+        },
+        {
+          id: "prod_anc_headphones",
+          name: "Studio Pro ANC Wireless Headphones",
+          nameBn: "স্টুডিও প্রো ওয়্যারলেস হেডফোন",
+          desc: "Active Noise Cancelling Bluetooth 5.3 over-ear headphones with 45-hour battery life and deep bass.",
+          descBn: "নয়েজ ক্যান্সেলিং ব্লুটুথ ৫.৩ হেডফোন, ৪৫ ঘন্টা ব্যাটারি ব্যাকআপ।",
+          category: "cat_electronics",
+          catLabel: "Electronics",
+          catLabelBn: "ইলেকট্রনিক্স",
+          brand: "SonicBD",
+          regularPrice: 4500,
+          discountPrice: 3290,
+          stock: 25,
+          rating: 4.8,
+          reviews: 64,
+          sizes: ["Adjustable"],
+          colors: ["Matte Black", "Midnight Olive"],
+          img: "./app/src/main/res/drawable/img_prod_headphones.jpg"
+        },
+        {
+          id: "prod_leather_handbag",
+          name: "Classic Cognac Leather Handbag",
+          nameBn: "ক্লাসিক লেদার হ্যান্ডব্যাগ",
+          desc: "Structured full-grain leather tote handbag with gold-tone clasp and spacious compartments.",
+          descBn: "প্রিমিয়াম চামড়ার তৈরি আধুনিক ও টেকসই লেডিস হ্যান্ডব্যাগ।",
+          category: "cat_accessories",
+          catLabel: "Accessories",
+          catLabelBn: "এক্সেসরিজ",
+          brand: "Bengal Hide",
+          regularPrice: 3800,
+          discountPrice: 2950,
+          stock: 14,
+          rating: 4.7,
+          reviews: 29,
+          sizes: ["Medium"],
+          colors: ["Cognac Brown", "Jet Black"],
+          img: "./app/src/main/res/drawable/img_prod_handbag.jpg"
+        },
+        {
+          id: "prod_smartwatch_amoled",
+          name: "Apex AMOLED Fitness Smartwatch",
+          nameBn: "এপেক্স অ্যামোলেড স্মার্টওয়াচ",
+          desc: "1.9-inch AMOLED always-on display, Bluetooth calling, SpO2 & heart rate tracking, IP68 water resistance.",
+          descBn: "ব্লুটুথ কলিং ও হেলথ ট্র্যাকিং সুবিধাসম্পন্ন প্রিমিয়াম স্মার্টওয়াচ।",
+          category: "cat_accessories",
+          catLabel: "Accessories",
+          catLabelBn: "এক্সেসরিজ",
+          brand: "TechPulse BD",
+          regularPrice: 3600,
+          discountPrice: 2490,
+          stock: 32,
+          rating: 4.6,
+          reviews: 53,
+          sizes: ["44mm"],
+          colors: ["Obsidian Black", "Starlight Silver"],
+          img: "./app/src/main/res/drawable/img_prod_watch.jpg"
+        },
+        {
+          id: "prod_white_sneakers",
+          name: "Urban Ivory Comfort Sneakers",
+          nameBn: "আরবান আইভরি কমফোর্ট স্নিকার্স",
+          desc: "Lightweight breathable court sneakers with memory-foam insole for all-day walking comfort.",
+          descBn: "হালকা ও আরামদায়ক ডেইলি ওয়্যার ফ্যাশনেবল স্নিকার্স।",
+          category: "cat_footwear",
+          catLabel: "Footwear",
+          catLabelBn: "জুতা",
+          brand: "StepBD",
+          regularPrice: 2400,
+          discountPrice: 1790,
+          stock: 40,
+          rating: 4.7,
+          reviews: 38,
+          sizes: ["40", "41", "42", "43", "44"],
+          colors: ["Warm Ivory", "Slate Grey"],
+          img: "./app/src/main/res/drawable/img_prod_sneakers.jpg"
+        },
+        {
+          id: "prod_glow_serum",
+          name: "Botanical Vitamin C Glow Serum",
+          nameBn: "বোটানিক্যাল ভিটামিন সি গ্লো সিরাম",
+          desc: "Dermatologist-tested brightening serum with hyaluronic acid and saffron extract for radiant skin.",
+          descBn: "ত্বকের উজ্জ্বলতা ও আর্দ্রতা বাড়াতে প্রাকৃতিক ভিটামিন সি সিরাম।",
+          category: "cat_beauty",
+          catLabel: "Beauty & Care",
+          catLabelBn: "রূপচর্চা",
+          brand: "Sundarban Botanics",
+          regularPrice: 1350,
+          discountPrice: 990,
+          stock: 48,
+          rating: 4.8,
+          reviews: 31,
+          sizes: ["50ml"],
+          colors: ["Amber Glass"],
+          img: "./app/src/main/res/drawable/img_prod_skincare.jpg"
+        },
+        {
+          id: "prod_flagship_phone",
+          name: "Nova X1 5G Smartphone (8/256GB)",
+          nameBn: "নোভা এক্স১ ৫জি স্মার্টফোন",
+          desc: "120Hz AMOLED display, 50MP OIS triple camera, 5000mAh fast charging, official Bangladesh warranty.",
+          descBn: "১২০ হার্জ অ্যামোলেড ডিসপ্লে ও ৫০ মেগাপিক্সেল ক্যামেরাযুক্ত অফিসিয়াল স্মার্টফোন।",
+          category: "cat_electronics",
+          catLabel: "Electronics",
+          catLabelBn: "ইলেকট্রনিক্স",
+          brand: "NovaTech",
+          regularPrice: 32990,
+          discountPrice: 28990,
+          stock: 9,
+          rating: 4.9,
+          reviews: 19,
+          sizes: ["8GB / 256GB", "12GB / 512GB"],
+          colors: ["Emerald Black", "Titanium Gold"],
+          img: "./app/src/main/res/drawable/img_prod_smartphone.jpg"
+        },
+        {
+          id: "prod_tws_earbuds",
+          name: "AirSound Pro TWS Earbuds",
+          nameBn: "এয়ারসাউন্ড প্রো ইয়ারবাডস",
+          desc: "Compact ANC true wireless earbuds with quad-mic ENC, wireless charging case, and low-latency mode.",
+          descBn: "ক্রিস্টাল ক্লিয়ার সাউন্ড ও ফাস্ট চার্জিং ট্রু ওয়্যারলেস ইয়ারবাডস।",
+          category: "cat_electronics",
+          catLabel: "Electronics",
+          catLabelBn: "ইলেকট্রনিক্স",
+          brand: "SonicBD",
+          regularPrice: 2200,
+          discountPrice: 1450,
+          stock: 55,
+          rating: 4.6,
+          reviews: 77,
+          sizes: ["Universal Fit"],
+          colors: ["Graphite", "Pearl White"],
+          img: "./app/src/main/res/drawable/img_prod_earbuds.jpg"
+        }
+      ];
+
+      const CATEGORIES = [
+        { id: "all", en: "All Products", bn: "সকল পণ্য" },
+        { id: "cat_fashion", en: "Fashion", bn: "ফ্যাশন" },
+        { id: "cat_electronics", en: "Electronics", bn: "ইলেকট্রনিক্স" },
+        { id: "cat_beauty", en: "Beauty & Care", bn: "রূপচর্চা" },
+        { id: "cat_footwear", en: "Footwear", bn: "জুতা" },
+        { id: "cat_accessories", en: "Accessories", bn: "এক্সেসরিজ" }
+      ];
+
+      const COUPONS = {
+        EID15: { percent: 15, max: 1000, min: 1500 },
+        SHOP10: { percent: 10, max: 500, min: 500 }
+      };
+
+      const state = {
+        lang: "en",
+        theme: "light",
+        category: "all",
+        query: "",
+        sort: "featured",
+        coupon: null,
+        cart: [],
+        modalProduct: null
+      };
+
+      try {
+        const savedCart = localStorage.getItem("bsbd_cart");
+        if (savedCart) state.cart = JSON.parse(savedCart) || [];
+        const savedTheme = localStorage.getItem("bsbd_theme");
+        if (savedTheme === "dark") state.theme = "dark";
+      } catch (_) {}
+
+      const fmt = (n) => "৳" + Number(n || 0).toLocaleString("en-IN");
+
+      function saveCart() {
+        try { localStorage.setItem("bsbd_cart", JSON.stringify(state.cart)); } catch (_) {}
+      }
+
+      function applyTheme() {
+        document.documentElement.setAttribute("data-theme", state.theme);
+        document.getElementById("theme-btn").textContent = state.theme === "dark" ? "☀️" : "🌙";
+      }
+
+      function renderTexts() {
+        const bn = state.lang === "bn";
+        document.getElementById("lang-btn").textContent = bn ? "English" : "বাংলা";
+        document.getElementById("brand-tagline").textContent = bn ? "স্মার্ট শপিং, সহজ কেনাকাটা!" : "Shop Smart, Shop Easy!";
+        document.getElementById("topbar-location").textContent = bn ? "গাইবান্ধা, বাংলাদেশ • হটলাইন: ০১৭৮৭৯৬২৯১৩" : "Gaibandha, Bangladesh • Hotline: 01787962913";
+        document.getElementById("topbar-promo").textContent = bn ? "৳৩,০০০+ অর্ডারে ফ্রি ডেলিভারি • কুপন: EID15, SHOP10" : "Free delivery above ৳3,000 • Coupons: EID15 (15% off), SHOP10 (10% off)";
+        document.getElementById("search-input").placeholder = bn ? "পণ্য খুঁজুন (শাড়ি, হেডফোন, জুতা)..." : "Search sarees, electronics, sneakers...";
+        document.getElementById("cart-label").textContent = bn ? "কার্ট" : "Cart";
+        document.getElementById("hero-title").textContent = bn ? "স্মার্ট শপিং, সহজ কেনাকাটা!" : "Shop Smart, Shop Easy!";
+        document.getElementById("hero-desc").textContent = bn
+          ? "গাইবান্ধা থেকে সারা বাংলাদেশের ৬৪ জেলায় ফ্যাশন, ইলেকট্রনিক্স ও লাইফস্টাইল পণ্যে দ্রুত হোম ডেলিভারি। বিকাশ, নগদ, রকেট, উপায়, কার্ড ও ক্যাশ অন ডেলিভারি সুবিধা।"
+          : "Authentic fashion, electronics, beauty & lifestyle essentials delivered from Gaibandha to all 64 districts of Bangladesh with bKash, Nagad, Rocket, Upay, Card & Cash on Delivery.";
+        document.getElementById("hero-shop-btn").textContent = bn ? "কেনাকাটা শুরু করুন" : "Shop Now";
+        document.getElementById("wa-float-label").textContent = bn ? "হোয়াটসঅ্যাপ সাপোর্ট" : "WhatsApp Support";
+        document.getElementById("drawer-title").textContent = bn ? "শপিং কার্ট" : "Shopping Cart";
+        document.getElementById("lbl-subtotal").textContent = bn ? "সাবটোটাল" : "Subtotal";
+        document.getElementById("lbl-discount").textContent = bn ? "কুপন ছাড়" : "Coupon Discount";
+        document.getElementById("lbl-delivery").textContent = bn ? "ডেলিভারি চার্জ" : "Delivery Charge";
+        document.getElementById("lbl-total").textContent = bn ? "সর্বমোট" : "Total";
+        document.getElementById("checkout-wa-btn").textContent = bn ? "হোয়াটসঅ্যাপে অর্ডার করুন (01787962913)" : "Order via WhatsApp (01787962913)";
+      }
+
+      function renderCategories() {
+        const container = document.getElementById("category-chips");
+        container.innerHTML = CATEGORIES.map((c) => {
+          const active = state.category === c.id ? "active" : "";
+          const label = state.lang === "bn" ? c.bn : c.en;
+          return `<button type="button" class="chip ${active}" data-cat="${c.id}">${label}</button>`;
+        }).join("");
+        container.querySelectorAll("button").forEach((btn) => {
+          btn.addEventListener("click", () => {
+            state.category = btn.getAttribute("data-cat");
+            renderCategories();
+            renderProducts();
+          });
+        });
+      }
+
+      function renderProducts() {
+        const q = state.query.trim().toLowerCase();
+        let list = PRODUCTS.filter((p) => {
+          const catOk = state.category === "all" || p.category === state.category;
+          const qOk = !q || p.name.toLowerCase().includes(q) || p.nameBn.toLowerCase().includes(q) || p.brand.toLowerCase().includes(q);
+          return catOk && qOk;
+        });
+        if (state.sort === "price-asc") list = list.slice().sort((a, b) => a.discountPrice - b.discountPrice);
+        if (state.sort === "price-desc") list = list.slice().sort((a, b) => b.discountPrice - a.discountPrice);
+        if (state.sort === "discount") {
+          list = list.slice().sort((a, b) => ((b.regularPrice - b.discountPrice) / b.regularPrice) - ((a.regularPrice - a.discountPrice) / a.regularPrice));
+        }
+
+        const grid = document.getElementById("product-grid");
+        if (!list.length) {
+          grid.innerHTML = `<div style="grid-column:1/-1; padding:32px; text-align:center; background:var(--surface); border-radius:16px; border:1px solid var(--border);">${state.lang === "bn" ? "কোনো পণ্য পাওয়া যায়নি।" : "No matching products found."}</div>`;
+          return;
+        }
+
+        grid.innerHTML = list.map((p) => {
+          const title = state.lang === "bn" ? p.nameBn : p.name;
+          const pct = Math.round(((p.regularPrice - p.discountPrice) / p.regularPrice) * 100);
+          return `
+            <article class="card">
+              <div class="card-img-box" data-open="${p.id}">
+                <img src="${p.img}" alt="${title}" loading="lazy" onerror="this.style.opacity='0.2'" />
+                ${pct > 0 ? `<span class="discount-tag">-${pct}%</span>` : ""}
+              </div>
+              <div class="card-body">
+                <div class="card-brand">${p.brand}</div>
+                <h3 class="card-title" data-open="${p.id}">${title}</h3>
+                <div class="card-meta">★ ${p.rating} (${p.reviews}) • ${state.lang === "bn" ? "স্টক" : "In stock"}: ${p.stock}</div>
+                <div class="price-row">
+                  <span class="price-now">${fmt(p.discountPrice)}</span>
+                  ${p.regularPrice > p.discountPrice ? `<span class="price-old">${fmt(p.regularPrice)}</span>` : ""}
+                </div>
+                <button class="card-btn" type="button" data-add="${p.id}">${state.lang === "bn" ? "কার্টে যোগ করুন" : "Add to Cart"}</button>
+              </div>
+            </article>
+          `;
+        }).join("");
+
+        grid.querySelectorAll("[data-open]").forEach((el) => {
+          el.addEventListener("click", () => openModal(el.getAttribute("data-open")));
+        });
+        grid.querySelectorAll("[data-add]").forEach((btn) => {
+          btn.addEventListener("click", () => addToCart(btn.getAttribute("data-add")));
+        });
+      }
+
+      function addToCart(productId) {
+        const prod = PRODUCTS.find((p) => p.id === productId);
+        if (!prod) return;
+        const existing = state.cart.find((i) => i.id === productId);
+        if (existing) {
+          existing.qty = Math.min(existing.qty + 1, prod.stock);
+        } else {
+          state.cart.push({ id: prod.id, qty: 1 });
+        }
+        saveCart();
+        renderCart();
+      }
+
+      function renderCart() {
+        const badge = document.getElementById("cart-badge");
+        const totalQty = state.cart.reduce((s, i) => s + i.qty, 0);
+        badge.textContent = totalQty;
+
+        const container = document.getElementById("cart-items");
+        if (!state.cart.length) {
+          container.innerHTML = `<div style="text-align:center; padding:40px 16px; color:var(--muted);">${state.lang === "bn" ? "আপনার কার্ট বর্তমানে খালি।" : "Your shopping cart is empty."}</div>`;
+        } else {
+          container.innerHTML = state.cart.map((item) => {
+            const p = PRODUCTS.find((x) => x.id === item.id);
+            if (!p) return "";
+            const title = state.lang === "bn" ? p.nameBn : p.name;
+            return `
+              <div class="cart-item">
+                <img src="${p.img}" alt="${title}" />
+                <div style="flex:1; min-width:0;">
+                  <div style="font-weight:700; font-size:13.5px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">${title}</div>
+                  <div style="font-size:13px; color:var(--primary); font-weight:700;">${fmt(p.discountPrice)} × ${item.qty}</div>
+                  <div class="qty-row">
+                    <button class="qty-btn" type="button" data-dec="${p.id}">-</button>
+                    <span style="font-weight:700; min-width:18px; text-align:center;">${item.qty}</span>
+                    <button class="qty-btn" type="button" data-inc="${p.id}">+</button>
+                    <button class="pill-btn" type="button" data-del="${p.id}" style="padding:4px 10px; min-height:28px; margin-left:auto;">🗑</button>
+                  </div>
+                </div>
+              </div>
+            `;
+          }).join("");
+
+          container.querySelectorAll("[data-dec]").forEach((b) => b.addEventListener("click", () => updateQty(b.getAttribute("data-dec"), -1)));
+          container.querySelectorAll("[data-inc]").forEach((b) => b.addEventListener("click", () => updateQty(b.getAttribute("data-inc"), 1)));
+          container.querySelectorAll("[data-del]").forEach((b) => b.addEventListener("click", () => updateQty(b.getAttribute("data-del"), -999)));
+        }
+
+        const subtotal = state.cart.reduce((sum, item) => {
+          const p = PRODUCTS.find((x) => x.id === item.id);
+          return sum + (p ? p.discountPrice * item.qty : 0);
+        }, 0);
+
+        let discount = 0;
+        if (state.coupon && COUPONS[state.coupon]) {
+          const c = COUPONS[state.coupon];
+          if (subtotal >= c.min) {
+            discount = Math.min(Math.round(subtotal * (c.percent / 100)), c.max);
+          }
+        }
+
+        const district = document.getElementById("district-select").value;
+        const delivery = subtotal === 0 ? 0 : (subtotal >= 3000 ? 0 : (district === "Dhaka" ? 60 : 120));
+        const total = Math.max(0, subtotal - discount + delivery);
+
+        document.getElementById("val-subtotal").textContent = fmt(subtotal);
+        document.getElementById("val-discount").textContent = "-" + fmt(discount);
+        document.getElementById("val-delivery").textContent = delivery === 0 && subtotal > 0 ? (state.lang === "bn" ? "ফ্রি" : "FREE") : fmt(delivery);
+        document.getElementById("val-total").textContent = fmt(total);
+      }
+
+      function updateQty(id, delta) {
+        const idx = state.cart.findIndex((i) => i.id === id);
+        if (idx === -1) return;
+        const next = state.cart[idx].qty + delta;
+        if (next <= 0) state.cart.splice(idx, 1);
+        else state.cart[idx].qty = next;
+        saveCart();
+        renderCart();
+      }
+
+      function openModal(productId) {
+        const p = PRODUCTS.find((x) => x.id === productId);
+        if (!p) return;
+        state.modalProduct = p;
+        document.getElementById("modal-img").src = p.img;
+        document.getElementById("modal-img").alt = p.name;
+        document.getElementById("modal-brand").textContent = p.brand;
+        document.getElementById("modal-title").textContent = state.lang === "bn" ? p.nameBn : p.name;
+        document.getElementById("modal-price").textContent = fmt(p.discountPrice);
+        document.getElementById("modal-regular").textContent = p.regularPrice > p.discountPrice ? fmt(p.regularPrice) : "";
+        document.getElementById("modal-desc").textContent = state.lang === "bn" ? p.descBn : p.desc;
+        document.getElementById("modal-variants").textContent =
+          `Sizes: ${p.sizes.join(", ")} • Colors: ${p.colors.join(", ")} • Stock: ${p.stock}`;
+        document.getElementById("modal-add-btn").textContent = state.lang === "bn" ? "কার্টে যোগ করুন" : "Add to Cart";
+        document.getElementById("product-modal").classList.add("open");
+      }
+
+      document.getElementById("lang-btn").addEventListener("click", () => {
+        state.lang = state.lang === "bn" ? "en" : "bn";
+        renderTexts();
+        renderCategories();
+        renderProducts();
+        renderCart();
+      });
+
+      document.getElementById("theme-btn").addEventListener("click", () => {
+        state.theme = state.theme === "dark" ? "light" : "dark";
+        try { localStorage.setItem("bsbd_theme", state.theme); } catch (_) {}
+        applyTheme();
+      });
+
+      document.getElementById("search-input").addEventListener("input", (e) => {
+        state.query = e.target.value;
+        renderProducts();
+      });
+
+      document.getElementById("sort-select").addEventListener("change", (e) => {
+        state.sort = e.target.value;
+        renderProducts();
+      });
+
+      document.getElementById("cart-open-btn").addEventListener("click", () => {
+        document.getElementById("cart-backdrop").classList.add("open");
+      });
+      document.getElementById("cart-close-btn").addEventListener("click", () => {
+        document.getElementById("cart-backdrop").classList.remove("open");
+      });
+      document.getElementById("cart-backdrop").addEventListener("click", (e) => {
+        if (e.target.id === "cart-backdrop") e.target.classList.remove("open");
+      });
+
+      document.getElementById("coupon-apply-btn").addEventListener("click", () => {
+        const code = document.getElementById("coupon-input").value.trim().toUpperCase();
+        state.coupon = COUPONS[code] ? code : null;
+        renderCart();
+      });
+
+      document.getElementById("district-select").addEventListener("change", renderCart);
+
+      document.getElementById("checkout-wa-btn").addEventListener("click", () => {
+        if (!state.cart.length) return;
+        const lines = state.cart.map((item) => {
+          const p = PRODUCTS.find((x) => x.id === item.id);
+          return p ? `- ${p.name} x${item.qty} (${fmt(p.discountPrice * item.qty)})` : "";
+        }).filter(Boolean);
+        const totalText = document.getElementById("val-total").textContent;
+        const dist = document.getElementById("district-select").value;
+        const msg = `Hello Best Shoping BD! I want to place an order:\n${lines.join("\n")}\nDistrict: ${dist}\nTotal: ${totalText}`;
+        window.open(`https://wa.me/8801787962913?text=${encodeURIComponent(msg)}`, "_blank", "noopener");
+      });
+
+      document.getElementById("modal-close").addEventListener("click", () => {
+        document.getElementById("product-modal").classList.remove("open");
+      });
+      document.getElementById("product-modal").addEventListener("click", (e) => {
+        if (e.target.id === "product-modal") e.target.classList.remove("open");
+      });
+      document.getElementById("modal-add-btn").addEventListener("click", () => {
+        if (state.modalProduct) {
+          addToCart(state.modalProduct.id);
+          document.getElementById("product-modal").classList.remove("open");
+          document.getElementById("cart-backdrop").classList.add("open");
+        }
+      });
+
+      applyTheme();
+      renderTexts();
+      renderCategories();
+      renderProducts();
+      renderCart();
+    })();
+  </script>
+</body>
+</html>
